@@ -47,8 +47,8 @@
                 <td>
                     <select name="wp_telegram[mode]">
                         <option <?php if (!is_ssl()) { echo 'disabled'; } ?> value="0"
-                            <?php if ($options[ 'mode']==0 ) { echo ' selected="selected"'; } ?>>Telegram WebHooks</option>
-                        <option value="1" <?php if ($options[ 'mode']==1 ) { echo ' selected="selected"'; } ?>>WPTele.ga Platform</option>
+                            <?php if ( isset( $options['mode'] ) && $options['mode'] == 0 ) { echo ' selected="selected"'; } ?>>Telegram WebHooks</option>
+                        <option value="1" <?php if ( isset( $options['mode'] ) && $options['mode'] == 1 ) { echo ' selected="selected"'; } ?>>WPTele.ga Platform</option>
                     </select>
                     <br><small>
 
@@ -69,7 +69,7 @@
                     <label for="zapier"><?php _e('Enable Zapier', 'telegram-bot'); ?></label>
                 </th>
                 <td>
-                    <input id="zapier" name="wp_telegram[zapier]" type="checkbox" value="1" <?php checked( '1', $options[ 'zapier']); ?> />
+                    <input id="zapier" name="wp_telegram[zapier]" type="checkbox" value="1" <?php checked( '1', ( isset( $options['zapier'] ) ? $options[ 'zapier'] : null ) ); ?> />
                     <br> <small>enable zapier integration &bull; Beta &bull; <a href="https://zapier.com/developer/invite/26805/1ec54299d4307c0b86b7417d0866ff25/">Click here to get an invite</a></small> </td>
             </tr>
             <tr valign="top">
@@ -79,18 +79,18 @@
                 <td>
                     <input id="channelusername" type="text" name="wp_telegram[channelusername]" value="<?php
 
-               echo $options['channelusername'];
+               echo ( ! empty( $options['channelusername'] ) ? $options['channelusername'] : '' );
 
                ?>" size="55" />
                     <br><small>Insert here your channel username if you want to stream messages to it. Ex. <b>@sanpellegrinoterme</b>
                 <br>The bot must be administrator in your channel</small> </td>
             </tr>
-            <tr valign="top" <?php if (!$options[ 'debug']) { echo 'style="display:none;"'; } ?>>
+            <tr valign="top" <?php if ( empty( $options['debug'] ) ) { echo 'style="display:none;"'; } ?>>
                 <th scope="row">
                     <label for="debug">Enable Debug</label>
                 </th>
                 <td>
-                    <input id="debug" name="wp_telegram[debug]" type="checkbox" value="1" <?php checked( '1', $options[ 'debug']); ?> />
+                    <input id="debug" name="wp_telegram[debug]" type="checkbox" value="1" <?php checked( '1', ( isset( $options['debug'] ) ? $options[ 'debug'] : null ) ); ?> />
                     <br> <small>Enable debugging. Do not use this if not asked by support!</small> </td>
             </tr>
             <tr valign="top">
