@@ -32,7 +32,7 @@ $conta = count($defaults);
 for ($i = 0; $i < $conta; $i++) {
 
 
-    if (!$my_options[$defaults[$i][0]]) {
+    if (!isset($my_options[$defaults[$i][0]]) && !$my_options[$defaults[$i][0]]) {
 
 
         $my_options[$defaults[$i][0]] = $defaults[$i][1];
@@ -47,6 +47,4 @@ for ($i = 0; $i < $conta; $i++) {
 }
 
 
-?>
-
-
+?>
