@@ -47,8 +47,8 @@
                 <td>
                     <select name="wp_telegram[mode]">
                         <option <?php if (!is_ssl()) { echo 'disabled'; } ?> value="0"
-                            <?php if ($options[ 'mode']==0 ) { echo ' selected="selected"'; } ?>>Telegram WebHooks</option>
-                        <option value="1" <?php if ($options[ 'mode']==1 ) { echo ' selected="selected"'; } ?>>WPTele.ga Platform</option>
+                            <?php if ( isset( $options['mode'] ) && $options['mode'] == 0 ) { echo ' selected="selected"'; } ?>>Telegram WebHooks</option>
+                        <option value="1" <?php if ( isset( $options['mode'] ) && $options['mode'] == 1 ) { echo ' selected="selected"'; } ?>>WPTele.ga Platform</option>
                     </select>
                     <br><small>
 
